@@ -64,6 +64,7 @@ Abre en el navegador la URL con token que imprime JupyterLab. El contenedor usa 
      a los núcleos lógicos del equipo).
    - `USAR_DATOS_SINTETICOS = False` para usar el Covertype real (se descarga solo la primera vez; requiere internet).
      `True` genera datos de prueba con la misma forma (54 variables, 7 clases), solo para depurar sin internet.
+   - Ray es opcional: `pip install "ray>=2.9"` y `CORRER_RAY = True`.
 3. *Run All*. Cada corrida se guarda en `resultados/`; si se interrumpe, al volver a ejecutar se omiten las ya hechas (`REHACER = False`).
 
 > El tiempo total depende del equipo: el notebook imprime una estimación después de medir la versión secuencial.

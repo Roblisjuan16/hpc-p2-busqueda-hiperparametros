@@ -7,4 +7,4 @@ mpi4py>=3.1        # requiere una implementación de MPI (OpenMPI/MPICH en Linux
 psutil>=5.9
 jupyterlab>=4.0
 ipykernel>=6.29
-ray>=2.9           # opcional: solo para paralelo_ray
+# ray>=2.9         # opcional, solo para paralelo_ray (CORRER_RAY = True): pip install "ray>=2.9"
