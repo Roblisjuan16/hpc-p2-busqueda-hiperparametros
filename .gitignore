@@ -2,3 +2,5 @@ __pycache__/
 .ipynb_checkpoints/
 datos/
 *.npz
+resultados/tasks.pkl
+resultados/mpi_raw_*
