@@ -39,12 +39,15 @@ def evaluate(task):
     """Evalúa UNA combinación de hiperparámetros. Devuelve puntajes, tiempos y el PID del proceso."""
     idx, params, path, folds, seed = task
     X, y = _get_data(path)
-    t0 = time.time()
+    # dur se mide con perf_counter (lo que pide el enunciado). time.time() solo sirve para ubicar la tarea
+    # en el diagrama de Gantt, porque es el único reloj que comparten todos los procesos.
+    t_inicio = time.time()
+    c0 = time.perf_counter()
     clf = RandomForestClassifier(random_state=seed, n_jobs=1, **params)   # n_jobs=1: el paralelismo es ENTRE tareas
     cv = StratifiedKFold(n_splits=folds, shuffle=True, random_state=seed)
     s = cross_validate(clf, X, y, cv=cv, scoring=("accuracy", "f1_macro"), n_jobs=1)
-    t1 = time.time()
+    dur = time.perf_counter() - c0
     out = dict(idx=idx, **params)
     out.update(acc=float(s["test_accuracy"].mean()), f1=float(s["test_f1_macro"].mean()),
-               t_start=t0, t_end=t1, dur=t1 - t0, pid=os.getpid())
+               t_start=t_inicio, t_end=t_inicio + dur, dur=dur, pid=os.getpid())
     return out
