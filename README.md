@@ -13,7 +13,7 @@ cientos de combinaciones con validación cruzada, y se compara el rendimiento de
 | Ray (opcional) | `paralelo_ray/` | memoria distribuida |
 
 Se miden tiempo, *speedup* `S(p)=T1/Tp`, eficiencia `E(p)=S(p)/p`, desbalance de carga y la fracción paralela estimada con la
-Ley de Amdahl, con 1, 2, 4 y 8 procesos y varias repeticiones (media ± desviación estándar).
+Ley de Amdahl, con 1, 2, 4, 8 y 16 procesos (según los núcleos del equipo) y varias repeticiones (media ± desviación estándar).
 
 ## Estructura
 
@@ -60,7 +60,8 @@ Abre en el navegador la URL con token que imprime JupyterLab. El contenedor usa 
 1. Abrir `experimentos/HPC_P2_Busqueda_Hiperparametros.ipynb` **desde la carpeta `experimentos/`** (para que encuentre los módulos).
 2. Ajustar la celda de configuración (sección 3):
    - `MODO = "prueba"` para verificar que todo funciona (minutos); `"estandar"` para el reporte; `"completo"` para más datos y ~288 combinaciones.
-   - `REPS` (repeticiones por configuración; el enunciado pide al menos 3) y `MAX_PROCS` (1, 2, 4, 8 según los núcleos).
+   - `REPS` (repeticiones por configuración; el enunciado pide al menos 3) y `MAX_PROCS` (por defecto 16; se recorta solo
+     a los núcleos lógicos del equipo).
    - `USAR_DATOS_SINTETICOS = False` para usar el Covertype real (se descarga solo la primera vez; requiere internet).
 3. *Run All*. Cada corrida se guarda en `resultados/`; si se interrumpe, al volver a ejecutar se omiten las ya hechas (`REHACER = False`).
 
