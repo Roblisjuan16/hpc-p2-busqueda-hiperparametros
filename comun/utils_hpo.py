@@ -15,7 +15,7 @@ CONFIGS = {
         grid=dict(n_estimators=[5, 10, 20], max_depth=[3, 8, None],
                   max_features=["sqrt", 0.5], min_samples_split=[2, 10])),                      # 36 combinaciones
     "estandar": dict(
-        n_muestra=10000,
+        n_muestra=30000,          # con más datos cada tarea tarda más y el arranque de procesos pesa menos
         grid=dict(n_estimators=[10, 25, 50, 100], max_depth=[5, 10, 20, None],
                   max_features=["sqrt", 0.4], min_samples_split=[2, 10],
                   min_samples_leaf=[1, 3])),                                                    # 128 combinaciones
